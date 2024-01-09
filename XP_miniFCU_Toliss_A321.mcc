@@ -1,6 +1,62 @@
 ﻿<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <MobiflightConnector>
   <outputs>
+    <config guid="db704105-27e9-43cf-abac-9d53579bfa66">
+      <active>true</active>
+      <description>FCU - Mach Indicator</description>
+      <settings msdata:InstanceType="MobiFlight.OutputConfigItem, MFConnector, Version=10.0.2.3, Culture=neutral, PublicKeyToken=null" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+        <source type="XplaneDataRef" path="sim/cockpit/autopilot/airspeed_is_mach" />
+        <test type="Float" value="1" />
+        <modifiers />
+        <display type="CustomDevice" serial="miniCOCKPIT miniFCU/ SN-000-000" trigger="normal" customType="" customName="miniFCU LCD" messageType="2" value="$" />
+        <preconditions />
+        <configrefs />
+      </settings>
+    </config>
+    <config guid="f9d291c3-67db-4658-bf78-30b3d159750d">
+      <active>true</active>
+      <description>FCU - Mach Value</description>
+      <settings msdata:InstanceType="MobiFlight.OutputConfigItem, MFConnector, Version=10.0.2.3, Culture=neutral, PublicKeyToken=null" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+        <source type="XplaneDataRef" path="sim/cockpit/autopilot/airspeed" />
+        <test type="Float" value="25" />
+        <modifiers>
+          <transformation active="True" expression="$*100" />
+        </modifiers>
+        <display type="CustomDevice" serial="miniCOCKPIT miniFCU/ SN-000-000" trigger="normal" customType="" customName="miniFCU LCD" messageType="1" value="$" />
+        <preconditions>
+          <precondition type="config" active="true" ref="db704105-27e9-43cf-abac-9d53579bfa66" operand="=" value="1" logic="and" />
+          <precondition type="config" active="true" ref="410e5026-5cb8-4955-90dc-bcbc51270773" operand="=" value="0" logic="and" />
+        </preconditions>
+        <configrefs />
+      </settings>
+    </config>
+    <config guid="410e5026-5cb8-4955-90dc-bcbc51270773">
+      <active>true</active>
+      <description>FCU - SPD Dashes</description>
+      <settings msdata:InstanceType="MobiFlight.OutputConfigItem, MFConnector, Version=10.0.2.3, Culture=neutral, PublicKeyToken=null" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+        <source type="XplaneDataRef" path="AirbusFBW/SPDdashed" />
+        <test type="Float" value="1" />
+        <modifiers />
+        <display type="CustomDevice" serial="miniCOCKPIT miniFCU/ SN-000-000" trigger="normal" customType="" customName="miniFCU LCD" messageType="3" value="$" />
+        <preconditions />
+        <configrefs />
+      </settings>
+    </config>
+    <config guid="b2fd9429-c185-4ef3-9099-a7a3273c5cef">
+      <active>true</active>
+      <description>FCU - SPD Value</description>
+      <settings msdata:InstanceType="MobiFlight.OutputConfigItem, MFConnector, Version=10.0.2.3, Culture=neutral, PublicKeyToken=null" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+        <source type="XplaneDataRef" path="sim/cockpit/autopilot/airspeed" />
+        <test type="Float" value="1" />
+        <modifiers />
+        <display type="CustomDevice" serial="miniCOCKPIT miniFCU/ SN-000-000" trigger="normal" customType="" customName="miniFCU LCD" messageType="0" value="$" />
+        <preconditions>
+          <precondition type="config" active="true" ref="410e5026-5cb8-4955-90dc-bcbc51270773" operand="!=" value="1" logic="and" />
+          <precondition type="config" active="true" ref="db704105-27e9-43cf-abac-9d53579bfa66" operand="!=" value="1" logic="and" />
+        </preconditions>
+        <configrefs />
+      </settings>
+    </config>
     <config guid="f50b5f89-89f8-4a9e-80cc-d8960ae4ca4b">
       <active>true</active>
       <description>FCU - SPD Dot</description>
@@ -13,6 +69,18 @@
         <configrefs />
       </settings>
     </config>
+    <config guid="5cf127bd-cf50-4c86-a65e-e11e8d571abe">
+      <active>true</active>
+      <description>FCU - HDG Dashes</description>
+      <settings msdata:InstanceType="MobiFlight.OutputConfigItem, MFConnector, Version=10.0.2.3, Culture=neutral, PublicKeyToken=null" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+        <source type="XplaneDataRef" path="AirbusFBW/HDGdashed" />
+        <test type="Float" value="1" />
+        <modifiers />
+        <display type="CustomDevice" serial="miniCOCKPIT miniFCU/ SN-000-000" trigger="normal" customType="" customName="miniFCU LCD" messageType="6" value="$" />
+        <preconditions />
+        <configrefs />
+      </settings>
+    </config>
     <config guid="87e4e9de-2912-4971-9a17-66f51116841c">
       <active>true</active>
       <description>FCU - HDG Value</description>
@@ -21,7 +89,9 @@
         <test type="Float" value="1" />
         <modifiers />
         <display type="CustomDevice" serial="miniCOCKPIT miniFCU/ SN-000-000" trigger="normal" customType="" customName="miniFCU LCD" messageType="5" value="$" />
-        <preconditions />
+        <preconditions>
+          <precondition type="config" active="true" ref="5cf127bd-cf50-4c86-a65e-e11e8d571abe" operand="=" value="0" logic="and" />
+        </preconditions>
         <configrefs />
       </settings>
     </config>
@@ -63,6 +133,18 @@
         <configrefs />
       </settings>
     </config>
+    <config guid="cd2aac33-aae8-4145-9985-36a771bcc0df">
+      <active>true</active>
+      <description>FCU - VS Dash</description>
+      <settings msdata:InstanceType="MobiFlight.OutputConfigItem, MFConnector, Version=10.0.2.3, Culture=neutral, PublicKeyToken=null" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+        <source type="XplaneDataRef" path="AirbusFBW/VSdashed" />
+        <test type="Float" value="1" />
+        <modifiers />
+        <display type="CustomDevice" serial="miniCOCKPIT miniFCU/ SN-000-000" trigger="normal" customType="" customName="miniFCU LCD" messageType="12" value="$" />
+        <preconditions />
+        <configrefs />
+      </settings>
+    </config>
     <config guid="626a750f-ef3f-411e-ab2c-e834bfae9695">
       <active>true</active>
       <description>FCU - VS Value</description>
@@ -91,28 +173,26 @@
         <configrefs />
       </settings>
     </config>
-    <config guid="a44d531b-fb34-4890-91e3-515f52ed6683">
+    <config guid="7afecec4-4289-4c5d-823f-08920e61edb7">
       <active>true</active>
-      <description>FCU - SPD Value</description>
+      <description>FCU - LOC LED</description>
       <settings msdata:InstanceType="MobiFlight.OutputConfigItem, MFConnector, Version=10.0.2.3, Culture=neutral, PublicKeyToken=null" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
-        <source type="XplaneDataRef" path="sim/cockpit/autopilot/airspeed" />
+        <source type="XplaneDataRef" path="AirbusFBW/LOConCapt" />
         <test type="Float" value="1" />
-        <modifiers>
-          <transformation active="False" expression="round(0)" />
-        </modifiers>
-        <display type="CustomDevice" serial="miniCOCKPIT miniFCU/ SN-000-000" trigger="normal" customType="" customName="miniFCU LCD" messageType="0" value="$" />
+        <modifiers />
+        <display type="Output" serial="miniCOCKPIT miniFCU/ SN-000-000" trigger="normal" pin="LOC" pinBrightness="255" />
         <preconditions />
         <configrefs />
       </settings>
     </config>
-    <config guid="cd2aac33-aae8-4145-9985-36a771bcc0df">
+    <config guid="b2790918-834f-49d8-ac4b-a4086b6e7c72">
       <active>true</active>
-      <description>FCU - VS Dash</description>
+      <description>FCU - HDG/TRK Mode</description>
       <settings msdata:InstanceType="MobiFlight.OutputConfigItem, MFConnector, Version=10.0.2.3, Culture=neutral, PublicKeyToken=null" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
-        <source type="XplaneDataRef" path="AirbusFBW/VSdashed" />
-        <test type="Float" value="1" />
+        <source type="XplaneDataRef" path="AirbusFBW/HDGTRKmode" />
+        <test type="Float" value="0" />
         <modifiers />
-        <display type="CustomDevice" serial="miniCOCKPIT miniFCU/ SN-000-000" trigger="normal" customType="" customName="miniFCU LCD" messageType="12" value="$" />
+        <display type="CustomDevice" serial="miniCOCKPIT miniFCU/ SN-000-000" trigger="normal" customType="" customName="miniFCU LCD" messageType="13" value="$" />
         <preconditions />
         <configrefs />
       </settings>
@@ -153,18 +233,6 @@
         <configrefs />
       </settings>
     </config>
-    <config guid="7afecec4-4289-4c5d-823f-08920e61edb7">
-      <active>true</active>
-      <description>FCU - LOC LED</description>
-      <settings msdata:InstanceType="MobiFlight.OutputConfigItem, MFConnector, Version=10.0.2.3, Culture=neutral, PublicKeyToken=null" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
-        <source type="XplaneDataRef" path="AirbusFBW/LOConCapt" />
-        <test type="Float" value="1" />
-        <modifiers />
-        <display type="Output" serial="miniCOCKPIT miniFCU/ SN-000-000" trigger="normal" pin="LOC" pinBrightness="255" />
-        <preconditions />
-        <configrefs />
-      </settings>
-    </config>
     <config guid="aa4e42d0-9fa6-49b5-9e8c-95092d9aa801">
       <active>true</active>
       <description>FCU - EXPED (Capt FD) LED</description>
@@ -185,70 +253,6 @@
         <test type="Float" value="1" />
         <modifiers />
         <display type="Output" serial="miniCOCKPIT miniFCU/ SN-000-000" trigger="normal" pin="APPR" pinBrightness="255" />
-        <preconditions />
-        <configrefs />
-      </settings>
-    </config>
-    <config guid="db704105-27e9-43cf-abac-9d53579bfa66">
-      <active>true</active>
-      <description>Mach Indicator</description>
-      <settings msdata:InstanceType="MobiFlight.OutputConfigItem, MFConnector, Version=10.0.2.3, Culture=neutral, PublicKeyToken=null" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
-        <source type="XplaneDataRef" path="sim/cockpit/autopilot/airspeed_is_mach" />
-        <test type="Float" value="1" />
-        <modifiers />
-        <display type="CustomDevice" serial="miniCOCKPIT miniFCU/ SN-000-000" trigger="normal" customType="" customName="miniFCU LCD" messageType="2" value="$" />
-        <preconditions />
-        <configrefs />
-      </settings>
-    </config>
-    <config guid="f9d291c3-67db-4658-bf78-30b3d159750d">
-      <active>true</active>
-      <description>Mach Value</description>
-      <settings msdata:InstanceType="MobiFlight.OutputConfigItem, MFConnector, Version=10.0.2.3, Culture=neutral, PublicKeyToken=null" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
-        <source type="XplaneDataRef" path="sim/cockpit/autopilot/airspeed" />
-        <test type="Float" value="25" />
-        <modifiers>
-          <transformation active="True" expression="$*100" />
-        </modifiers>
-        <display type="CustomDevice" serial="miniCOCKPIT miniFCU/ SN-000-000" trigger="normal" customType="" customName="miniFCU LCD" messageType="1" value="$" />
-        <preconditions>
-          <precondition type="config" active="true" ref="db704105-27e9-43cf-abac-9d53579bfa66" operand="=" value="1" logic="and" />
-        </preconditions>
-        <configrefs />
-      </settings>
-    </config>
-    <config guid="b2790918-834f-49d8-ac4b-a4086b6e7c72">
-      <active>true</active>
-      <description>HDG/TRK Mode</description>
-      <settings msdata:InstanceType="MobiFlight.OutputConfigItem, MFConnector, Version=10.0.2.3, Culture=neutral, PublicKeyToken=null" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
-        <source type="XplaneDataRef" path="AirbusFBW/HDGTRKmode" />
-        <test type="Float" value="0" />
-        <modifiers />
-        <display type="CustomDevice" serial="miniCOCKPIT miniFCU/ SN-000-000" trigger="normal" customType="" customName="miniFCU LCD" messageType="13" value="$" />
-        <preconditions />
-        <configrefs />
-      </settings>
-    </config>
-    <config guid="410e5026-5cb8-4955-90dc-bcbc51270773">
-      <active>true</active>
-      <description>FCU - SPD Dashes</description>
-      <settings msdata:InstanceType="MobiFlight.OutputConfigItem, MFConnector, Version=10.0.2.3, Culture=neutral, PublicKeyToken=null" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
-        <source type="XplaneDataRef" path="AirbusFBW/SPDmanaged" />
-        <test type="Float" value="1" />
-        <modifiers />
-        <display type="CustomDevice" serial="miniCOCKPIT miniFCU/ SN-000-000" trigger="normal" customType="" customName="miniFCU LCD" messageType="3" value="$" />
-        <preconditions />
-        <configrefs />
-      </settings>
-    </config>
-    <config guid="5cf127bd-cf50-4c86-a65e-e11e8d571abe">
-      <active>true</active>
-      <description>FCU - HDG Dashes</description>
-      <settings msdata:InstanceType="MobiFlight.OutputConfigItem, MFConnector, Version=10.0.2.3, Culture=neutral, PublicKeyToken=null" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
-        <source type="XplaneDataRef" path="AirbusFBW/HDGmanaged" />
-        <test type="Float" value="1" />
-        <modifiers />
-        <display type="CustomDevice" serial="miniCOCKPIT miniFCU/ SN-000-000" trigger="normal" customType="" customName="miniFCU LCD" messageType="6" value="$" />
         <preconditions />
         <configrefs />
       </settings>
@@ -317,7 +321,7 @@
       <description>FCU - ATHR Button</description>
       <settings msdata:InstanceType="MobiFlight.InputConfigItem, MFConnector, Version=10.0.2.3, Culture=neutral, PublicKeyToken=null" serial="miniCOCKPIT miniFCU/ SN-000-000" name="ATHR Button" type="Button" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
         <button>
-          <onPress type="XplaneInputAction" inputType="DataRef" path="AirbusFBW/ATHRbutton" expression="" />
+          <onPress type="XplaneInputAction" inputType="Command" path="AirbusFBW/ATHRbutton" expression="" />
         </button>
         <preconditions />
         <configrefs />
