@@ -1,0 +1,622 @@
+﻿<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<MobiflightConnector>
+  <outputs>
+    <config guid="db704105-27e9-43cf-abac-9d53579bfa66">
+      <active>true</active>
+      <description>FCU - Mach Indicator</description>
+      <settings msdata:InstanceType="MobiFlight.OutputConfigItem, MFConnector, Version=10.0.2.3, Culture=neutral, PublicKeyToken=null" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+        <source type="XplaneDataRef" path="sim/cockpit/autopilot/airspeed_is_mach" />
+        <test type="Float" value="1" />
+        <modifiers />
+        <display type="CustomDevice" serial="miniCOCKPIT miniFCU/ SN-000-000" trigger="normal" customType="" customName="miniFCU LCD" messageType="2" value="$" />
+        <preconditions />
+        <configrefs />
+      </settings>
+    </config>
+    <config guid="f9d291c3-67db-4658-bf78-30b3d159750d">
+      <active>true</active>
+      <description>FCU - Mach Value</description>
+      <settings msdata:InstanceType="MobiFlight.OutputConfigItem, MFConnector, Version=10.0.2.3, Culture=neutral, PublicKeyToken=null" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+        <source type="XplaneDataRef" path="sim/cockpit/autopilot/airspeed" />
+        <test type="Float" value="25" />
+        <modifiers>
+          <transformation active="True" expression="Round($*100,0)" />
+        </modifiers>
+        <display type="CustomDevice" serial="miniCOCKPIT miniFCU/ SN-000-000" trigger="normal" customType="" customName="miniFCU LCD" messageType="1" value="$" />
+        <preconditions>
+          <precondition type="config" active="true" ref="db704105-27e9-43cf-abac-9d53579bfa66" operand="=" value="1" logic="and" />
+          <precondition type="config" active="true" ref="410e5026-5cb8-4955-90dc-bcbc51270773" operand="=" value="0" logic="and" />
+        </preconditions>
+        <configrefs />
+      </settings>
+    </config>
+    <config guid="410e5026-5cb8-4955-90dc-bcbc51270773">
+      <active>true</active>
+      <description>FCU - SPD Dashes</description>
+      <settings msdata:InstanceType="MobiFlight.OutputConfigItem, MFConnector, Version=10.0.2.3, Culture=neutral, PublicKeyToken=null" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+        <source type="Variable" varType="number" varName="show_spd_dashes" varExpression="$" />
+        <test type="Float" value="1" />
+        <modifiers />
+        <display type="CustomDevice" serial="miniCOCKPIT miniFCU/ SN-000-000" trigger="normal" customType="" customName="miniFCU LCD" messageType="3" value="$" />
+        <preconditions />
+        <configrefs />
+      </settings>
+    </config>
+    <config guid="b2fd9429-c185-4ef3-9099-a7a3273c5cef">
+      <active>true</active>
+      <description>FCU - SPD Value</description>
+      <settings msdata:InstanceType="MobiFlight.OutputConfigItem, MFConnector, Version=10.0.2.3, Culture=neutral, PublicKeyToken=null" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+        <source type="XplaneDataRef" path="sim/cockpit2/autopilot/airspeed_dial_kts" />
+        <test type="Float" value="1" />
+        <modifiers>
+          <transformation active="True" expression="Round($,0)" />
+        </modifiers>
+        <display type="CustomDevice" serial="miniCOCKPIT miniFCU/ SN-000-000" trigger="normal" customType="" customName="miniFCU LCD" messageType="0" value="$" />
+        <preconditions>
+          <precondition type="config" active="true" ref="410e5026-5cb8-4955-90dc-bcbc51270773" operand="!=" value="1" logic="and" />
+          <precondition type="config" active="true" ref="db704105-27e9-43cf-abac-9d53579bfa66" operand="!=" value="1" logic="and" />
+        </preconditions>
+        <configrefs />
+      </settings>
+    </config>
+    <config guid="f50b5f89-89f8-4a9e-80cc-d8960ae4ca4b">
+      <active>true</active>
+      <description>FCU - SPD Dot</description>
+      <settings msdata:InstanceType="MobiFlight.OutputConfigItem, MFConnector, Version=10.0.2.3, Culture=neutral, PublicKeyToken=null" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+        <source type="XplaneDataRef" path="sim/cockpit2/autopilot/vnav_speed_window_open" />
+        <test type="Float" value="1" />
+        <modifiers>
+          <comparison active="True" value="1" operand="=" ifValue="0" elseValue="1" />
+        </modifiers>
+        <display type="CustomDevice" serial="miniCOCKPIT miniFCU/ SN-000-000" trigger="normal" customType="" customName="miniFCU LCD" messageType="4" value="$" />
+        <preconditions />
+        <configrefs />
+      </settings>
+    </config>
+    <config guid="5cf127bd-cf50-4c86-a65e-e11e8d571abe">
+      <active>true</active>
+      <description>FCU - HDG Dashes</description>
+      <settings msdata:InstanceType="MobiFlight.OutputConfigItem, MFConnector, Version=10.0.2.3, Culture=neutral, PublicKeyToken=null" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+        <source type="Variable" varType="number" varName="show_hdg_dashes" varExpression="$" />
+        <test type="Float" value="1" />
+        <modifiers />
+        <display type="CustomDevice" serial="miniCOCKPIT miniFCU/ SN-000-000" trigger="normal" customType="" customName="miniFCU LCD" messageType="6" value="$" />
+        <preconditions />
+        <configrefs />
+      </settings>
+    </config>
+    <config guid="87e4e9de-2912-4971-9a17-66f51116841c">
+      <active>true</active>
+      <description>FCU - HDG Value</description>
+      <settings msdata:InstanceType="MobiFlight.OutputConfigItem, MFConnector, Version=10.0.2.3, Culture=neutral, PublicKeyToken=null" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+        <source type="XplaneDataRef" path="sim/cockpit/autopilot/heading_mag" />
+        <test type="Float" value="1" />
+        <modifiers>
+          <transformation active="True" expression="Round($,0)" />
+        </modifiers>
+        <display type="CustomDevice" serial="miniCOCKPIT miniFCU/ SN-000-000" trigger="normal" customType="" customName="miniFCU LCD" messageType="5" value="$" />
+        <preconditions>
+          <precondition type="config" active="true" ref="5cf127bd-cf50-4c86-a65e-e11e8d571abe" operand="=" value="0" logic="and" />
+        </preconditions>
+        <configrefs />
+      </settings>
+    </config>
+    <config guid="3d8e2818-3f23-4881-968c-388acb5327fe">
+      <active>true</active>
+      <description>FCU - HDG Dot</description>
+      <settings msdata:InstanceType="MobiFlight.OutputConfigItem, MFConnector, Version=10.0.2.3, Culture=neutral, PublicKeyToken=null" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+        <source type="XplaneDataRef" path="sim/cockpit2/autopilot/heading_mode" />
+        <test type="Float" value="1" />
+        <modifiers>
+          <comparison active="True" value="13" operand="=" ifValue="1" elseValue="0" />
+        </modifiers>
+        <display type="CustomDevice" serial="miniCOCKPIT miniFCU/ SN-000-000" trigger="normal" customType="" customName="miniFCU LCD" messageType="7" value="$" />
+        <preconditions />
+        <configrefs />
+      </settings>
+    </config>
+    <config guid="fd1fac75-16db-4c65-814a-fc00b92c4358">
+      <active>true</active>
+      <description>FCU - ALT Value</description>
+      <settings msdata:InstanceType="MobiFlight.OutputConfigItem, MFConnector, Version=10.0.2.3, Culture=neutral, PublicKeyToken=null" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+        <source type="XplaneDataRef" path="sim/cockpit2/autopilot/altitude_dial_ft" />
+        <test type="Float" value="35000" />
+        <modifiers>
+          <transformation active="True" expression="$/100" />
+        </modifiers>
+        <display type="CustomDevice" serial="miniCOCKPIT miniFCU/ SN-000-000" trigger="normal" customType="" customName="miniFCU LCD" messageType="8" value="$" />
+        <preconditions />
+        <configrefs />
+      </settings>
+    </config>
+    <config guid="89f5c748-76ac-4455-ac3e-35e25edd765e">
+      <active>true</active>
+      <description>FCU - ALT Dot</description>
+      <settings msdata:InstanceType="MobiFlight.OutputConfigItem, MFConnector, Version=10.0.2.3, Culture=neutral, PublicKeyToken=null" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+        <source type="XplaneDataRef" path="sim/cockpit2/autopilot/altitude_mode" />
+        <test type="Float" value="1" />
+        <modifiers>
+          <comparison active="True" value="20" operand="=" ifValue="1" elseValue="0" />
+        </modifiers>
+        <display type="CustomDevice" serial="miniCOCKPIT miniFCU/ SN-000-000" trigger="normal" customType="" customName="miniFCU LCD" messageType="9" value="$" />
+        <preconditions />
+        <configrefs />
+      </settings>
+    </config>
+    <config guid="cd2aac33-aae8-4145-9985-36a771bcc0df">
+      <active>true</active>
+      <description>FCU - VS Dash</description>
+      <settings msdata:InstanceType="MobiFlight.OutputConfigItem, MFConnector, Version=10.0.2.3, Culture=neutral, PublicKeyToken=null" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+        <source type="XplaneDataRef" path="sim/cockpit2/autopilot/altitude_mode" />
+        <test type="Float" value="1" />
+        <modifiers>
+          <transformation active="True" expression="if($=19||$=4,0,1)" />
+        </modifiers>
+        <display type="CustomDevice" serial="miniCOCKPIT miniFCU/ SN-000-000" trigger="normal" customType="" customName="miniFCU LCD" messageType="12" value="$" />
+        <preconditions />
+        <configrefs />
+      </settings>
+    </config>
+    <config guid="626a750f-ef3f-411e-ab2c-e834bfae9695">
+      <active>true</active>
+      <description>FCU - VS Value</description>
+      <settings msdata:InstanceType="MobiFlight.OutputConfigItem, MFConnector, Version=10.0.2.3, Culture=neutral, PublicKeyToken=null" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+        <source type="XplaneDataRef" path="sim/cockpit/autopilot/vertical_velocity" />
+        <test type="Float" value="1100" />
+        <modifiers />
+        <display type="CustomDevice" serial="miniCOCKPIT miniFCU/ SN-000-000" trigger="normal" customType="" customName="miniFCU LCD" messageType="10" value="$" />
+        <preconditions>
+          <precondition type="config" active="true" ref="b2790918-834f-49d8-ac4b-a4086b6e7c72" operand="=" value="0" logic="and" />
+        </preconditions>
+        <configrefs />
+      </settings>
+    </config>
+    <config guid="a6831792-2e23-4a62-a123-a74142ee8b70">
+      <active>true</active>
+      <description>FCU - FPA Value</description>
+      <settings msdata:InstanceType="MobiFlight.OutputConfigItem, MFConnector, Version=10.0.2.3, Culture=neutral, PublicKeyToken=null" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+        <source type="XplaneDataRef" path="sim/cockpit2/autopilot/fpa" />
+        <test type="Float" value="1100" />
+        <modifiers>
+          <transformation active="True" expression="$*1000" />
+        </modifiers>
+        <display type="CustomDevice" serial="miniCOCKPIT miniFCU/ SN-000-000" trigger="normal" customType="" customName="miniFCU LCD" messageType="11" value="$" />
+        <preconditions>
+          <precondition type="config" active="true" ref="b2790918-834f-49d8-ac4b-a4086b6e7c72" operand="=" value="1" logic="and" />
+        </preconditions>
+        <configrefs />
+      </settings>
+    </config>
+    <config guid="7afecec4-4289-4c5d-823f-08920e61edb7">
+      <active>true</active>
+      <description>FCU - LOC LED</description>
+      <settings msdata:InstanceType="MobiFlight.OutputConfigItem, MFConnector, Version=10.0.2.3, Culture=neutral, PublicKeyToken=null" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+        <source type="XplaneDataRef" path="AirbusFBW/LOConCapt" />
+        <test type="Float" value="1" />
+        <modifiers />
+        <display type="Output" serial="miniCOCKPIT miniFCU/ SN-000-000" trigger="normal" pin="LOC" pinBrightness="255" />
+        <preconditions />
+        <configrefs />
+      </settings>
+    </config>
+    <config guid="b2790918-834f-49d8-ac4b-a4086b6e7c72">
+      <active>true</active>
+      <description>FCU - HDG/TRK Mode</description>
+      <settings msdata:InstanceType="MobiFlight.OutputConfigItem, MFConnector, Version=10.0.2.3, Culture=neutral, PublicKeyToken=null" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+        <source type="XplaneDataRef" path="sim/cockpit2/autopilot/trk_fpa" />
+        <test type="Float" value="0" />
+        <modifiers />
+        <display type="CustomDevice" serial="miniCOCKPIT miniFCU/ SN-000-000" trigger="normal" customType="" customName="miniFCU LCD" messageType="13" value="$" />
+        <preconditions />
+        <configrefs />
+      </settings>
+    </config>
+    <config guid="6bdb6cfa-1a7f-4f3d-be23-8447117a9b2f">
+      <active>true</active>
+      <description>FCU - AP1 LED</description>
+      <settings msdata:InstanceType="MobiFlight.OutputConfigItem, MFConnector, Version=10.0.2.3, Culture=neutral, PublicKeyToken=null" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+        <source type="XplaneDataRef" path="laminar/A333/annun/autopilot/ap1_mode" />
+        <test type="Float" value="1" />
+        <modifiers />
+        <display type="Output" serial="miniCOCKPIT miniFCU/ SN-000-000" trigger="normal" pin="AP1" pinBrightness="255" />
+        <preconditions />
+        <configrefs />
+      </settings>
+    </config>
+    <config guid="7a7ad382-0657-480d-8ba0-840a139ce1ff">
+      <active>true</active>
+      <description>FCU - AP2 LED</description>
+      <settings msdata:InstanceType="MobiFlight.OutputConfigItem, MFConnector, Version=10.0.2.3, Culture=neutral, PublicKeyToken=null" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+        <source type="XplaneDataRef" path="laminar/A333/annun/autopilot/ap2_mode" />
+        <test type="Float" value="1" />
+        <modifiers />
+        <display type="Output" serial="miniCOCKPIT miniFCU/ SN-000-000" trigger="normal" pin="AP2" pinBrightness="255" />
+        <preconditions />
+        <configrefs />
+      </settings>
+    </config>
+    <config guid="c86e84da-191c-493e-b094-c25f15686049">
+      <active>true</active>
+      <description>FCU - ATHR LED</description>
+      <settings msdata:InstanceType="MobiFlight.OutputConfigItem, MFConnector, Version=10.0.2.3, Culture=neutral, PublicKeyToken=null" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+        <source type="XplaneDataRef" path="laminar/A333/annun/autopilot/a_thr_mode" />
+        <test type="Float" value="1" />
+        <modifiers />
+        <display type="Output" serial="miniCOCKPIT miniFCU/ SN-000-000" trigger="normal" pin="ATHR" pinBrightness="255" />
+        <preconditions />
+        <configrefs />
+      </settings>
+    </config>
+    <config guid="aa4e42d0-9fa6-49b5-9e8c-95092d9aa801">
+      <active>true</active>
+      <description>FCU - EXPED (Capt FD) LED</description>
+      <settings msdata:InstanceType="MobiFlight.OutputConfigItem, MFConnector, Version=10.0.2.3, Culture=neutral, PublicKeyToken=null" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+        <source type="XplaneDataRef" path="laminar/A333/annun/capt_flight_director_on" />
+        <test type="Float" value="1" />
+        <modifiers />
+        <display type="Output" serial="miniCOCKPIT miniFCU/ SN-000-000" trigger="normal" pin="EXPED" pinBrightness="255" />
+        <preconditions />
+        <configrefs />
+      </settings>
+    </config>
+    <config guid="c488fbab-f114-4125-9ad4-a9aa1d58df7c">
+      <active>true</active>
+      <description>FCU - APPR LED</description>
+      <settings msdata:InstanceType="MobiFlight.OutputConfigItem, MFConnector, Version=10.0.2.3, Culture=neutral, PublicKeyToken=null" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+        <source type="XplaneDataRef" path="AirbusFBW/APPRilluminated" />
+        <test type="Float" value="1" />
+        <modifiers />
+        <display type="Output" serial="miniCOCKPIT miniFCU/ SN-000-000" trigger="normal" pin="APPR" pinBrightness="255" />
+        <preconditions />
+        <configrefs />
+      </settings>
+    </config>
+  </outputs>
+  <inputs>
+    <config guid="e9f3b951-0020-4e90-8b7b-b74a5d52d46f">
+      <active>true</active>
+      <description>FCU - SPD/MACH Button</description>
+      <settings msdata:InstanceType="MobiFlight.InputConfigItem, MFConnector, Version=10.0.2.3, Culture=neutral, PublicKeyToken=null" serial="miniCOCKPIT miniFCU/ SN-000-000" name="MACH Button" type="Button" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+        <button>
+          <onPress type="XplaneInputAction" inputType="Command" path="sim/autopilot/knots_mach_toggle" expression="if($&gt;0,0,1)" />
+        </button>
+        <preconditions />
+        <configrefs>
+          <configref active="False" ref="f50b5f89-89f8-4a9e-80cc-d8960ae4ca4b" placeholder="#" testvalue="1" />
+        </configrefs>
+      </settings>
+    </config>
+    <config guid="ea01fe47-9058-4ea0-8d56-ff954e150969">
+      <active>true</active>
+      <description>FCU - HDG/TRK Button</description>
+      <settings msdata:InstanceType="MobiFlight.InputConfigItem, MFConnector, Version=10.0.2.3, Culture=neutral, PublicKeyToken=null" serial="miniCOCKPIT miniFCU/ SN-000-000" name="TRK Button" type="Button" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+        <button>
+          <onPress type="XplaneInputAction" inputType="Command" path="sim/autopilot/trkfpa" expression="if($&gt;0,0,1)" />
+        </button>
+        <preconditions />
+        <configrefs />
+      </settings>
+    </config>
+    <config guid="67de7e12-db5c-4126-adf4-c678c8d41311">
+      <active>true</active>
+      <description>FCU - AP1 Button</description>
+      <settings msdata:InstanceType="MobiFlight.InputConfigItem, MFConnector, Version=10.0.2.3, Culture=neutral, PublicKeyToken=null" serial="miniCOCKPIT miniFCU/ SN-000-000" name="AP1 Button" type="Button" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+        <button>
+          <onPress type="XplaneInputAction" inputType="Command" path="sim/autopilot/servos_toggle" expression="if($&gt;0,0,1)" />
+        </button>
+        <preconditions />
+        <configrefs />
+      </settings>
+    </config>
+    <config guid="4ca03ffc-4602-47a6-8f65-d02fe61c1783">
+      <active>true</active>
+      <description>FCU - AP 2 Button</description>
+      <settings msdata:InstanceType="MobiFlight.InputConfigItem, MFConnector, Version=10.0.2.3, Culture=neutral, PublicKeyToken=null" serial="miniCOCKPIT miniFCU/ SN-000-000" name="AP2 Button" type="Button" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+        <button>
+          <onPress type="XplaneInputAction" inputType="Command" path="sim/autopilot/servos2_toggle" expression="if($&gt;0,0,1)" />
+        </button>
+        <preconditions />
+        <configrefs />
+      </settings>
+    </config>
+    <config guid="dc554c56-e2a4-472c-8426-06b96bf1a3f6">
+      <active>true</active>
+      <description>FCU - METRIC ALT Button</description>
+      <settings msdata:InstanceType="MobiFlight.InputConfigItem, MFConnector, Version=10.0.2.3, Culture=neutral, PublicKeyToken=null" serial="miniCOCKPIT miniFCU/ SN-000-000" name="METRIC Button" type="Button" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+        <button>
+          <onPress type="XplaneInputAction" inputType="Command" path="laminar/A333/autopilot/metric_alt_push" expression="if($&gt;0,0,1)" />
+        </button>
+        <preconditions />
+        <configrefs />
+      </settings>
+    </config>
+    <config guid="2ae6b8fa-2a41-46b4-be60-41acaa6f9c88">
+      <active>true</active>
+      <description>FCU - ATHR Button</description>
+      <settings msdata:InstanceType="MobiFlight.InputConfigItem, MFConnector, Version=10.0.2.3, Culture=neutral, PublicKeyToken=null" serial="miniCOCKPIT miniFCU/ SN-000-000" name="ATHR Button" type="Button" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+        <button>
+          <onPress type="XplaneInputAction" inputType="Command" path="laminar/A333/autopilot/a_thr_toggle" expression="" />
+        </button>
+        <preconditions />
+        <configrefs />
+      </settings>
+    </config>
+    <config guid="9ae262f3-f611-4210-b526-ef92f6f329b8">
+      <active>true</active>
+      <description>FCU - EXPED (Cpt FD) Button</description>
+      <settings msdata:InstanceType="MobiFlight.InputConfigItem, MFConnector, Version=10.0.2.3, Culture=neutral, PublicKeyToken=null" serial="miniCOCKPIT miniFCU/ SN-000-000" name="EXPED Button" type="Button" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+        <button>
+          <onPress type="XplaneInputAction" inputType="Command" path="sim/autopilot/fdir_command_bars_toggle" expression="" />
+        </button>
+        <preconditions />
+        <configrefs />
+      </settings>
+    </config>
+    <config guid="c0744c84-a13b-4f08-9357-d2def2ce64e8">
+      <active>true</active>
+      <description>FCU - LOC Button</description>
+      <settings msdata:InstanceType="MobiFlight.InputConfigItem, MFConnector, Version=10.0.2.3, Culture=neutral, PublicKeyToken=null" serial="miniCOCKPIT miniFCU/ SN-000-000" name="LOC Button" type="Button" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+        <button>
+          <onPress type="XplaneInputAction" inputType="Command" path="sim/autopilot/NAV" expression="" />
+        </button>
+        <preconditions />
+        <configrefs />
+      </settings>
+    </config>
+    <config guid="3275f4c8-7006-4ba2-b4d4-3e87030e23df">
+      <active>true</active>
+      <description>FCU - APPR Button</description>
+      <settings msdata:InstanceType="MobiFlight.InputConfigItem, MFConnector, Version=10.0.2.3, Culture=neutral, PublicKeyToken=null" serial="miniCOCKPIT miniFCU/ SN-000-000" name="APPR Button" type="Button" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+        <button>
+          <onPress type="XplaneInputAction" inputType="Command" path="sim/autopilot/approach" expression="" />
+        </button>
+        <preconditions />
+        <configrefs />
+      </settings>
+    </config>
+    <config guid="c9b94a3e-03a1-47bd-ad4e-9868b5ddeb73">
+      <active>true</active>
+      <description>FCU - ALT Encoder</description>
+      <settings msdata:InstanceType="MobiFlight.InputConfigItem, MFConnector, Version=10.0.2.3, Culture=neutral, PublicKeyToken=null" serial="miniCOCKPIT miniFCU/ SN-000-000" name="ALT Encoder" type="Encoder" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+        <encoder>
+          <onLeft type="XplaneInputAction" inputType="Command" path="sim/autopilot/altitude_down" expression="" />
+          <onLeftFast />
+          <onRight type="XplaneInputAction" inputType="Command" path="sim/autopilot/altitude_up" expression="" />
+          <onRightFast />
+        </encoder>
+        <preconditions />
+        <configrefs />
+      </settings>
+    </config>
+    <config guid="36544203-b588-4313-8287-f5718fa5424a">
+      <active>true</active>
+      <description>FCU - SPD Encoder</description>
+      <settings msdata:InstanceType="MobiFlight.InputConfigItem, MFConnector, Version=10.0.2.3, Culture=neutral, PublicKeyToken=null" serial="miniCOCKPIT miniFCU/ SN-000-000" name="SPD Encoder" type="Encoder" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+        <encoder>
+          <onLeft type="XplaneInputAction" inputType="Command" path="sim/autopilot/airspeed_down" expression="" />
+          <onLeftFast />
+          <onRight type="XplaneInputAction" inputType="Command" path="sim/autopilot/airspeed_up" expression="" />
+          <onRightFast />
+        </encoder>
+        <preconditions />
+        <configrefs />
+      </settings>
+    </config>
+    <config guid="d2c8dd86-f9cb-4da2-827d-5396f68ccc1f">
+      <active>false</active>
+      <description>FCU - SPD Encoder (disable dashes)</description>
+      <settings msdata:InstanceType="MobiFlight.InputConfigItem, MFConnector, Version=10.0.2.3, Culture=neutral, PublicKeyToken=null" serial="miniCOCKPIT miniFCU/ SN-000-000" name="SPD Encoder" type="Encoder" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+        <encoder>
+          <onLeft type="VariableInputAction" varType="number" varName="show_spd_dashes" varExpression="0" />
+          <onLeftFast />
+          <onRight type="VariableInputAction" varType="number" varName="show_spd_dashes" varExpression="0" />
+          <onRightFast />
+        </encoder>
+        <preconditions />
+        <configrefs />
+      </settings>
+    </config>
+    <config guid="268ffce4-72cc-42b6-978d-8a44fac53dba">
+      <active>true</active>
+      <description>FCU - HDG Encoder</description>
+      <settings msdata:InstanceType="MobiFlight.InputConfigItem, MFConnector, Version=10.0.2.3, Culture=neutral, PublicKeyToken=null" serial="miniCOCKPIT miniFCU/ SN-000-000" name="HDG Encoder" type="Encoder" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+        <encoder>
+          <onLeft type="XplaneInputAction" inputType="Command" path="sim/autopilot/heading_down" expression="" />
+          <onLeftFast />
+          <onRight type="XplaneInputAction" inputType="Command" path="sim/autopilot/heading_up" expression="" />
+          <onRightFast />
+        </encoder>
+        <preconditions />
+        <configrefs />
+      </settings>
+    </config>
+    <config guid="39f69e5e-52c6-4f97-8029-37acaa816e73">
+      <active>true</active>
+      <description>FCU - HDG Encoder (disable dashes)</description>
+      <settings msdata:InstanceType="MobiFlight.InputConfigItem, MFConnector, Version=10.0.2.3, Culture=neutral, PublicKeyToken=null" serial="miniCOCKPIT miniFCU/ SN-000-000" name="HDG Encoder" type="Encoder" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+        <encoder>
+          <onLeft type="VariableInputAction" varType="number" varName="show_hdg_dashes" varExpression="0" />
+          <onLeftFast />
+          <onRight type="VariableInputAction" varType="number" varName="show_hdg_dashes" varExpression="0" />
+          <onRightFast />
+        </encoder>
+        <preconditions />
+        <configrefs />
+      </settings>
+    </config>
+    <config guid="6d00e6d3-c271-4f37-9ed9-f1d81773f564">
+      <active>true</active>
+      <description>FCU - VS Encoder (VS Mode)</description>
+      <settings msdata:InstanceType="MobiFlight.InputConfigItem, MFConnector, Version=10.0.2.3, Culture=neutral, PublicKeyToken=null" serial="miniCOCKPIT miniFCU/ SN-000-000" name="VS Encoder" type="Encoder" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+        <encoder>
+          <onLeft type="XplaneInputAction" inputType="Command" path="sim/autopilot/vertical_speed_down" expression="" />
+          <onLeftFast />
+          <onRight type="XplaneInputAction" inputType="Command" path="sim/autopilot/vertical_speed_up" expression="" />
+          <onRightFast />
+        </encoder>
+        <preconditions>
+          <precondition type="config" active="true" ref="b2790918-834f-49d8-ac4b-a4086b6e7c72" operand="=" value="0" logic="and" />
+        </preconditions>
+        <configrefs />
+      </settings>
+    </config>
+    <config guid="35602d42-110c-4cf6-acbd-7cec0d76fc1d">
+      <active>true</active>
+      <description>FCU - VS Encoder (FPA Mode)</description>
+      <settings msdata:InstanceType="MobiFlight.InputConfigItem, MFConnector, Version=10.0.2.3, Culture=neutral, PublicKeyToken=null" serial="miniCOCKPIT miniFCU/ SN-000-000" name="VS Encoder" type="Encoder" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+        <encoder>
+          <onLeft type="XplaneInputAction" inputType="Command" path="laminar/A333/autopilot/fpa_decrease" expression="" />
+          <onLeftFast />
+          <onRight type="XplaneInputAction" inputType="Command" path="laminar/A333/autopilot/fpa_increase" expression="" />
+          <onRightFast />
+        </encoder>
+        <preconditions />
+        <configrefs />
+      </settings>
+    </config>
+    <config guid="7032f8af-1225-4157-a1df-689309381ade">
+      <active>true</active>
+      <description>FCU - SPD Push</description>
+      <settings msdata:InstanceType="MobiFlight.InputConfigItem, MFConnector, Version=10.0.2.3, Culture=neutral, PublicKeyToken=null" serial="miniCOCKPIT miniFCU/ SN-000-000" name="SPD PUSH" type="Button" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+        <button>
+          <onPress type="XplaneInputAction" inputType="Command" path="laminar/A333/autopilot/speed_knob_push" expression="" />
+        </button>
+        <preconditions />
+        <configrefs />
+      </settings>
+    </config>
+    <config guid="7ec3c58a-841a-4de5-9791-a04211aca212">
+      <active>true</active>
+      <description>FCU - SPD Push (enable dashes)</description>
+      <settings msdata:InstanceType="MobiFlight.InputConfigItem, MFConnector, Version=10.0.2.3, Culture=neutral, PublicKeyToken=null" serial="miniCOCKPIT miniFCU/ SN-000-000" name="SPD PUSH" type="Button" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+        <button>
+          <onPress type="VariableInputAction" varType="number" varName="show_spd_dashes" varExpression="1" />
+        </button>
+        <preconditions />
+        <configrefs />
+      </settings>
+    </config>
+    <config guid="90942b14-51c1-482d-bb7c-fbef5597a0e0">
+      <active>true</active>
+      <description>FCU - SPD Pull</description>
+      <settings msdata:InstanceType="MobiFlight.InputConfigItem, MFConnector, Version=10.0.2.3, Culture=neutral, PublicKeyToken=null" serial="miniCOCKPIT miniFCU/ SN-000-000" name="SPD PULL" type="Button" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+        <button>
+          <onPress type="XplaneInputAction" inputType="Command" path="laminar/A333/autopilot/speed_knob_pull" expression="" />
+        </button>
+        <preconditions />
+        <configrefs />
+      </settings>
+    </config>
+    <config guid="02c69c89-defe-434a-83d0-320a4358cec7">
+      <active>true</active>
+      <description>FCU - SPD Pull (disable dashes)</description>
+      <settings msdata:InstanceType="MobiFlight.InputConfigItem, MFConnector, Version=10.0.2.3, Culture=neutral, PublicKeyToken=null" serial="miniCOCKPIT miniFCU/ SN-000-000" name="SPD PULL" type="Button" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+        <button>
+          <onPress type="VariableInputAction" varType="number" varName="show_spd_dashes" varExpression="0" />
+        </button>
+        <preconditions />
+        <configrefs />
+      </settings>
+    </config>
+    <config guid="473f50e0-bd23-43d2-8cec-730014500119">
+      <active>true</active>
+      <description>FCU - HDG Push</description>
+      <settings msdata:InstanceType="MobiFlight.InputConfigItem, MFConnector, Version=10.0.2.3, Culture=neutral, PublicKeyToken=null" serial="miniCOCKPIT miniFCU/ SN-000-000" name="HDG PUSH" type="Button" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+        <button>
+          <onPress type="XplaneInputAction" inputType="Command" path="laminar/A333/autopilot/heading_knob_push" expression="" />
+        </button>
+        <preconditions />
+        <configrefs />
+      </settings>
+    </config>
+    <config guid="1fbe1d37-a8aa-4621-97da-adf7ed81110f">
+      <active>true</active>
+      <description>FCU - HDG Push (enable dashes)</description>
+      <settings msdata:InstanceType="MobiFlight.InputConfigItem, MFConnector, Version=10.0.2.3, Culture=neutral, PublicKeyToken=null" serial="miniCOCKPIT miniFCU/ SN-000-000" name="HDG PUSH" type="Button" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+        <button>
+          <onPress type="VariableInputAction" varType="number" varName="show_hdg_dashes" varExpression="1" />
+        </button>
+        <preconditions />
+        <configrefs />
+      </settings>
+    </config>
+    <config guid="56778c2f-fed2-4840-bdbd-2c9916f9334c">
+      <active>true</active>
+      <description>FCU - HDG Pull</description>
+      <settings msdata:InstanceType="MobiFlight.InputConfigItem, MFConnector, Version=10.0.2.3, Culture=neutral, PublicKeyToken=null" serial="miniCOCKPIT miniFCU/ SN-000-000" name="HDG PULL" type="Button" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+        <button>
+          <onPress type="XplaneInputAction" inputType="Command" path="laminar/A333/autopilot/heading_knob_pull" expression="" />
+        </button>
+        <preconditions />
+        <configrefs />
+      </settings>
+    </config>
+    <config guid="e1acd805-709f-4fff-b087-25eb91a7d98c">
+      <active>true</active>
+      <description>FCU - HDG Pull (disable dashes)</description>
+      <settings msdata:InstanceType="MobiFlight.InputConfigItem, MFConnector, Version=10.0.2.3, Culture=neutral, PublicKeyToken=null" serial="miniCOCKPIT miniFCU/ SN-000-000" name="HDG PULL" type="Button" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+        <button>
+          <onPress type="VariableInputAction" varType="number" varName="show_hdg_dashes" varExpression="0" />
+        </button>
+        <preconditions />
+        <configrefs />
+      </settings>
+    </config>
+    <config guid="426fa203-df08-4153-9ec5-747bb53db117">
+      <active>true</active>
+      <description>FCU - ALT Push</description>
+      <settings msdata:InstanceType="MobiFlight.InputConfigItem, MFConnector, Version=10.0.2.3, Culture=neutral, PublicKeyToken=null" serial="miniCOCKPIT miniFCU/ SN-000-000" name="ALT PUSH" type="Button" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+        <button>
+          <onPress type="XplaneInputAction" inputType="Command" path="laminar/A333/autopilot/altitude_knob_push" expression="" />
+        </button>
+        <preconditions />
+        <configrefs />
+      </settings>
+    </config>
+    <config guid="5a80c970-0f21-4971-9c6c-66aabc712706">
+      <active>true</active>
+      <description>FCU - ALT Pull</description>
+      <settings msdata:InstanceType="MobiFlight.InputConfigItem, MFConnector, Version=10.0.2.3, Culture=neutral, PublicKeyToken=null" serial="miniCOCKPIT miniFCU/ SN-000-000" name="ALT PULL" type="Button" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+        <button>
+          <onPress type="XplaneInputAction" inputType="Command" path="laminar/A333/autopilot/altitude_knob_pull" expression="" />
+        </button>
+        <preconditions />
+        <configrefs />
+      </settings>
+    </config>
+    <config guid="cc3be467-bb06-4d53-be1e-282379dc4f9a">
+      <active>true</active>
+      <description>FCU - VS Push</description>
+      <settings msdata:InstanceType="MobiFlight.InputConfigItem, MFConnector, Version=10.0.2.3, Culture=neutral, PublicKeyToken=null" serial="miniCOCKPIT miniFCU/ SN-000-000" name="VS PUSH" type="Button" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+        <button>
+          <onPress type="XplaneInputAction" inputType="Command" path="laminar/A333/autopilot/vertical_knob_push" expression="" />
+        </button>
+        <preconditions />
+        <configrefs />
+      </settings>
+    </config>
+    <config guid="dc68610b-8038-4525-be2d-384dcee44cb9">
+      <active>true</active>
+      <description>FCU - VS Pull</description>
+      <settings msdata:InstanceType="MobiFlight.InputConfigItem, MFConnector, Version=10.0.2.3, Culture=neutral, PublicKeyToken=null" serial="miniCOCKPIT miniFCU/ SN-000-000" name="VS PULL" type="Button" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+        <button>
+          <onPress type="XplaneInputAction" inputType="Command" path="laminar/A333/autopilot/vertical_knob_pull" expression="" />
+        </button>
+        <preconditions />
+        <configrefs />
+      </settings>
+    </config>
+    <config guid="ea73ce21-c682-4f88-a765-225d399275de">
+      <active>true</active>
+      <description>FCU - ALT 100/1000</description>
+      <settings msdata:InstanceType="MobiFlight.InputConfigItem, MFConnector, Version=10.0.2.3, Culture=neutral, PublicKeyToken=null" serial="miniCOCKPIT miniFCU/ SN-000-000" name="ALTINC" type="Button" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+        <button>
+          <onPress type="XplaneInputAction" inputType="Command" path="laminar/A333/autopilot/alt_step_right" expression="" />
+          <onRelease type="XplaneInputAction" inputType="Command" path="laminar/A333/autopilot/alt_step_left" expression="" />
+        </button>
+        <preconditions />
+        <configrefs />
+      </settings>
+    </config>
+  </inputs>
+</MobiflightConnector>
