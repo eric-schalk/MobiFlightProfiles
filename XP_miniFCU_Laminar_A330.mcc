@@ -191,7 +191,7 @@
       <active>true</active>
       <description>FCU - LOC LED</description>
       <settings msdata:InstanceType="MobiFlight.OutputConfigItem, MFConnector, Version=10.0.2.3, Culture=neutral, PublicKeyToken=null" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
-        <source type="XplaneDataRef" path="AirbusFBW/LOConCapt" />
+        <source type="XplaneDataRef" path="laminar/A333/annun/autopilot/loc_mode" />
         <test type="Float" value="1" />
         <modifiers />
         <display type="Output" serial="miniCOCKPIT miniFCU/ SN-000-000" trigger="normal" pin="LOC" pinBrightness="255" />
@@ -249,9 +249,9 @@
     </config>
     <config guid="aa4e42d0-9fa6-49b5-9e8c-95092d9aa801">
       <active>true</active>
-      <description>FCU - EXPED (Capt FD) LED</description>
+      <description>FCU - EXPED (ALT) LED</description>
       <settings msdata:InstanceType="MobiFlight.OutputConfigItem, MFConnector, Version=10.0.2.3, Culture=neutral, PublicKeyToken=null" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
-        <source type="XplaneDataRef" path="laminar/A333/annun/capt_flight_director_on" />
+        <source type="XplaneDataRef" path="sim/cockpit2/autopilot/altitude_hold_armed" />
         <test type="Float" value="1" />
         <modifiers />
         <display type="Output" serial="miniCOCKPIT miniFCU/ SN-000-000" trigger="normal" pin="EXPED" pinBrightness="255" />
@@ -263,7 +263,7 @@
       <active>true</active>
       <description>FCU - APPR LED</description>
       <settings msdata:InstanceType="MobiFlight.OutputConfigItem, MFConnector, Version=10.0.2.3, Culture=neutral, PublicKeyToken=null" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
-        <source type="XplaneDataRef" path="AirbusFBW/APPRilluminated" />
+        <source type="XplaneDataRef" path="laminar/A333/annun/autopilot/appr_mode" />
         <test type="Float" value="1" />
         <modifiers />
         <display type="Output" serial="miniCOCKPIT miniFCU/ SN-000-000" trigger="normal" pin="APPR" pinBrightness="255" />
@@ -343,10 +343,10 @@
     </config>
     <config guid="9ae262f3-f611-4210-b526-ef92f6f329b8">
       <active>true</active>
-      <description>FCU - EXPED (Cpt FD) Button</description>
+      <description>FCU - EXPED (ALT) Button</description>
       <settings msdata:InstanceType="MobiFlight.InputConfigItem, MFConnector, Version=10.0.2.3, Culture=neutral, PublicKeyToken=null" serial="miniCOCKPIT miniFCU/ SN-000-000" name="EXPED Button" type="Button" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
         <button>
-          <onPress type="XplaneInputAction" inputType="Command" path="sim/autopilot/fdir_command_bars_toggle" expression="" />
+          <onPress type="XplaneInputAction" inputType="Command" path="sim/autopilot/altitude_arm" expression="" />
         </button>
         <preconditions />
         <configrefs />
