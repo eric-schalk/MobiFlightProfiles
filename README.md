@@ -1,4 +1,4 @@
-# MobiFlightProfiles
+# MobiFlight Profiles for the miniFCU
 Various MobiFlight profiles for X-Plane and MSFS
 
 Known Issues:
